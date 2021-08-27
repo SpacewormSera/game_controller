@@ -1,88 +1,78 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import './index.css'
 
+const socket = new WebSocket('ws://localhost:8080');
 
 export function MainController() {
-  const [messages, setMessages] = useState([]);
-  const [value, setValue] = useState('');
-  const socket = useRef();
-  const [connected, setConnected] = useState(false);
-  const [username, setUsername] = useState('')
+  const [message, setMessage] = useState('');
+  const [connectionStatus, setconnectionStatus] = useState(false);
+
+  useEffect(() => {
+    socket.onopen = () => {
+      setMessage('connected');
+      setconnectionStatus(true);
+    };
+
+    socket.onmessage = (e) => {
+      console.log("Get message from server: " + e.data)
+      setMessage("Get message from server: " + e.data)
+    };
+
+    return () => {
+      socket.close()
+    }
+
+  }, []);  
+ 
+  const handleClick = (e) => {
+    e.preventDefault()
+    const message = {      
+      type:"echo",
+      payload: e.target.innerText
+    }
+    socket.send(JSON.stringify(message))
+  }
+
+  function disconnect () {
+    console.log('disconnected')    
+  }
 
   function connect() {
-    socket.current = new WebSocket('ws://localhost:5000');
-
-    socket.current.onopen = () => {
-      setConnected(true);
-      console.log('>> socket opened');
-
-      const message = {
-        event: 'connection',
-        username,
-        id: Date.now()
-      }
-      socket.current.send(JSON.stringify(message))
-    }
-
-    socket.current.onmessage = (event) => {
-      const message = event.data;
-      console.log(message);
-      // setMessages(prev => [message, ...prev])
-    }
-
-    socket.current.onclose = () => {
-      console.log('socket closed');
-    }
-
-    socket.current.onerror = () => {
-      console.log('socket error');
-    }
-
-    
-  }
- 
-  const sendMsg = async () => {
-    const message = {
-      event: 'message',
-      username,
-      id: Date.now()
-    }
-    socket.current.send(JSON.stringify(message));
-  }
+    console.log('connected', connectionStatus)
+  }  
 
   return (
     <>    
-      <div class="grid-container">
-        <div class="grid-container">
-          <div class="grid-item"></div>
-          <div class="grid-item"><button className="button">UP</button></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"><button className="button">LEFT</button></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"><button className="button">RIGHT</button></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"><button className="button">DOWN</button></div>
-          <div class="grid-item"></div>
+      <div className="wrapper">
+        <div className="buttonblock2">
+          <div className="grid-item"></div>
+          <div className="grid-item"><button className="button" onClick={handleClick}>UP</button></div>
+          <div className="grid-item"></div>
+          <div className="grid-item"><button className="button" onClick={handleClick}>LEFT</button></div>
+          <div className="grid-item"></div>
+          <div className="grid-item"><button className="button">RIGHT</button></div>
+          <div className="grid-item"></div>
+          <div className="grid-item"><button className="button">DOWN</button></div>
+          <div className="grid-item"></div>
         </div>
-        
-        <div class="grid-container">
-          <div class="grid-item"><button className="button">Select</button></div>
-          <div class="grid-item"><button className="button">Start</button></div>          
+        <div className="buttonblock3">
+          <div className="grid-item"><button className="button">Select</button></div>
+          <div className="grid-item"><button className="button">Start</button></div>          
         </div>
         <div>
-          <div class="grid-container"> 
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"><button className="button">A</button></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"><button className="button">B</button></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
+          <div className="buttonblock1"> 
+            <div className="grid-item"><button className="button">A</button></div>
+            <div className="grid-item"><button className="button">B</button></div>
+            <div className="grid-item"><button className="button">C</button></div>
+            <div className="grid-item"><button className="button">D</button></div>
           </div>
         </div>
-          
+
+        {/* <div>{!connectionStatus ?
+          <button onClick={connect}>Connect to server</button>    :
+          <button onClick={disconnect}>Disconnect from server</button>
+        }</div> */}
+
       </div>
     </>
   )

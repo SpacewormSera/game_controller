@@ -1,34 +1,69 @@
-.box{
-  max-width: "600px";
-  border: 2px solid rgb(0, 0, 0);
-  background-color: rgba(87, 86, 86, 0.493);
+* {padding: 0; margin: 0}
+
+  .wrapper{
+    border: 4px solid rgb(207, 0, 62);
+    background:rgb(182, 182, 182);
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    margin: 16px;
+    border-radius: 20px;
+    padding: 10px;
+  }
+
+  
+.wrapper > div{
+  padding: 1em;
+  /* background-color:rgb(221, 221, 221) */
 }
 
-.grid-container {
+
+
+.buttonblock1{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: rgb(97, 97, 97);
+  grid-auto-rows: minmax(200px, auto);
+}
+
+.buttonblock2{
   display: grid;
   grid-template-columns: auto auto auto;
-  background-color: #2196F3;
-  padding: 10px;
+  justify-content:center;
+  background-color: rgb(97, 97, 97);
+  grid-auto-rows: minmax(200px, auto);
 }
+
+.buttonblock3{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: rgb(97, 97, 97);
+  padding: 10px;
+  grid-auto-rows: minmax(200px, auto);
+}
+
 .grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
+  border: 1px solid rgb(0, 0, 0);
   padding: 20px;
   font-size: 30px;
   text-align: center;
 }
 
 .button {
-  background-color: #4CAF50; /* Green */
+  background-color: #4CAF50;
   border: none;
+  border-radius: 8px;
   color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  width:80%;
+  height:80%;
   min-width: 100px;
-  box-shadow: 0 9px #999;
+  max-width: 100%;
+  box-shadow: 0 9px rgb(62, 143, 59);
 }
 
 .button:active {
@@ -36,3 +71,4 @@
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
