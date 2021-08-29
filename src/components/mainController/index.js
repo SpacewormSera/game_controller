@@ -43,30 +43,32 @@ export function MainController() {
 
   return (
     <>    
-      <div className="wrapper">
-        <div className="buttonblock2">
+      <div className="container">
+
+        <div className="buttonblock1">
           <div className="grid-item"></div>
           <div className="grid-item"><button className="button" onClick={handleClick}>UP</button></div>
           <div className="grid-item"></div>
           <div className="grid-item"><button className="button" onClick={handleClick}>LEFT</button></div>
+          <div className="grid-item"><button className="button" onClick={handleClick}></button></div>
+          <div className="grid-item"><button className="button" onClick={handleClick}>RIGHT</button></div>
           <div className="grid-item"></div>
-          <div className="grid-item"><button className="button">RIGHT</button></div>
-          <div className="grid-item"></div>
-          <div className="grid-item"><button className="button">DOWN</button></div>
+          <div className="grid-item"><button className="button" onClick={handleClick}>DOWN</button></div>
           <div className="grid-item"></div>
         </div>
-        <div className="buttonblock3">
-          <div className="grid-item"><button className="button">Select</button></div>
-          <div className="grid-item"><button className="button">Start</button></div>          
+
+        <div className="buttonblock2">
+          <div className="grid-item"><button className="button" onClick={handleClick}>Select</button></div>
+          <div className="grid-item"><button className="button" onClick={handleClick}>Start</button></div>          
         </div>
-        <div>
-          <div className="buttonblock1"> 
-            <div className="grid-item"><button className="button">A</button></div>
-            <div className="grid-item"><button className="button">B</button></div>
-            <div className="grid-item"><button className="button">C</button></div>
-            <div className="grid-item"><button className="button">D</button></div>
+        
+          <div className="buttonblock3"> 
+            <div className="grid-item"><button className="button" onClick={handleClick}>A</button></div>
+            <div className="grid-item"><button className="button" onClick={handleClick}>B</button></div>
+            <div className="grid-item"><button className="button" onClick={handleClick}>C</button></div>
+            <div className="grid-item"><button className="button" onClick={handleClick}>D</button></div>
           </div>
-        </div>
+        
 
         {/* <div>{!connectionStatus ?
           <button onClick={connect}>Connect to server</button>    :
