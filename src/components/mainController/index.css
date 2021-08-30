@@ -2,7 +2,7 @@
 
   .container{
     display: grid;
-    grid-template-columns:2fr 1fr 2fr;
+    grid-template-columns:2fr 1fr 1.5fr;
     border: 2px solid rgb(124, 124, 124);
     align-items:end;
     background:rgb(182, 182, 182);
@@ -17,8 +17,9 @@
   grid-gap: 8px;
   background-color: rgb(97, 97, 97);
   border-radius: 14px;
-  margin: 6px;
-  padding:8px;
+  margin: 4px;
+  padding:6px;
+  padding-bottom: 10px;
 }
 
 .buttonblock1 button:nth-child(1){
@@ -52,9 +53,10 @@
   align-items:end;
   background-color: rgb(97, 97, 97);
   border-radius: 8px;
-  margin: 6px;
+  margin: 4px;
   grid-gap: 8px;
-  padding: 8px;
+  padding: 6px;
+  padding-bottom: 10px;
 }
 
 .buttonblock3{
@@ -63,37 +65,36 @@
   background-color: rgb(97, 97, 97);
   border-radius: 14px;
   grid-gap: 8px;
-  padding: 8px;
-  margin: 6px;
-}
-
-.grid-item {
-  border: 1px solid rgb(0, 0, 0);
-  aspect-ratio: 1;
+  padding: 6px;
+  padding-bottom: 10px;
+  margin: 4px;
 }
 
 .button {
   border: none;
   text-decoration: none;
-  display: inline-block;
   background-color: #4CAF50;
   box-shadow: 0 4px rgb(62, 143, 59);
   border-radius: 8px;
   width: 100%;
-  font-size:30px;
+  font-size:90%;
   color: white;
-  padding: 8px;
   aspect-ratio: 1;
+}
+
+.ghostButton {
+  border: none;
+  background-color: #5ba571;
+  border-radius: 8px;
+}
+
+.button:hover {
+  background-color: #64c567;
+  box-shadow: 0 4px rgb(62, 143, 59);
 }
 
 .button:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
-}
-
-@media (max-width: 768px) {
-  .grid-item {
-    border: 1px solid rgb(255, 16, 16);
-  }
 }

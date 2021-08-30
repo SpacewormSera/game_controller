@@ -39,11 +39,9 @@ export function MainController() {
         <div className="buttonblock1">
           <button className="button" onClick={handleClick}>UP</button>
           <button className="button" onClick={handleClick}>LEFT</button>
-          <button className="button"></button>
+          <button className="ghostButton"></button>
           <button className="button" onClick={handleClick}>RIGHT</button>
-
           <button className="button" onClick={handleClick}>DOWN</button>
-
         </div>
 
         <div className="buttonblock2">
