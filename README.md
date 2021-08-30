@@ -9,3 +9,5 @@ To start the app:
 
 3. You can see server response in the browser console
 
+![Prewiew](gc.png)
+
